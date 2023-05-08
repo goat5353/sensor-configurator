@@ -31,6 +31,7 @@ const contentStyle = {
   lineHeight: "120px",
   color: "#000",
   backgroundColor: "#fff",
+  padding: 12
 }
 const footerStyle = {
   textAlign: "center",
@@ -238,7 +239,7 @@ const LayoutApp = () => {
         <Header style={headerStyle}>Timer Setting</Header>
         <Content style={contentStyle}>
           <Row gutter={[16, 16]} wrap={true} justify={"center"}>
-            <Col span={14}>
+            <Col sm={24} md={14}>
               <List
                 header={
                   <List.Item
@@ -332,7 +333,7 @@ const LayoutApp = () => {
                 )}
               />
             </Col>
-            <Col span={8}>
+            <Col sm={24} md={8}>
               <Input.TextArea
                 ref={textareaRef}
                 value={textareaValue}
