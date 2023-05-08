@@ -42,70 +42,70 @@ const footerStyle = {
 const defaultData = [
   {
     day: "จันทร์",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
   {
     day: "อังคาร",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
 
   {
     day: "พุธ",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
 
   {
     day: "พฤหัสบดี",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
 
   {
     day: "ศุกร์",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
 
   {
     day: "เสาร์",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
 
   {
     day: "อาทิตย์",
-    start: "08:00",
-    end: "08:00",
-    start2: "08:00",
-    end2: "08:00",
+    start: "8:00",
+    end: "8:00",
+    start2: "8:00",
+    end2: "8:00",
     checked: false,
   },
 ]
 
 const LayoutApp = () => {
   const { Header, Content, Footer } = Layout
-  const format = "HH:mm"
+  const format = "H:mm"
   const [textareaValue, setTextareaValue] = useState("")
   const textareaRef = useRef()
   const [listData, setListData] = useState([])
@@ -132,10 +132,10 @@ const LayoutApp = () => {
     listData.forEach((item) => {
       timerFormat.push(
         `${item.checked ? 1 : 0},${dayjs("2023-01-01 " + item.start).format(
-          "HHmm"
-        )},${dayjs("2023-01-01 " + item.end).format("HHmm")},${dayjs(
+          "Hmm"
+        )},${dayjs("2023-01-01 " + item.end).format("Hmm")},${dayjs(
           "2023-01-01 " + item.start2
-        ).format("HHmm")},${dayjs("2023-01-01 " + item.end2).format("HHmm")}`
+        ).format("Hmm")},${dayjs("2023-01-01 " + item.end2).format("Hmm")}`
       )
     })
     setTextareaValue(timerFormat.join(","))
@@ -163,58 +163,58 @@ const LayoutApp = () => {
       const listData = [
         {
           day: "จันทร์",
-          start: dayjs("2023-01-01 " + newData[1]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[2]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[3]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[4]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[1]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[2]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[3]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[4]).format("H:mm"),
           checked: newData[0] === "1" ? true : false,
         },
         {
           day: "อังคาร",
-          start: dayjs("2023-01-01 " + newData[6]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[7]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[8]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[9]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[6]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[7]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[8]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[9]).format("H:mm"),
           checked: newData[5] === "1" ? true : false,
         },
         {
           day: "พุธ",
-          start: dayjs("2023-01-01 " + newData[11]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[12]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[13]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[14]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[11]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[12]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[13]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[14]).format("H:mm"),
           checked: newData[10] === "1" ? true : false,
         },
         {
           day: "พฤหัสบดี",
-          start: dayjs("2023-01-01 " + newData[16]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[17]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[18]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[19]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[16]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[17]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[18]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[19]).format("H:mm"),
           checked: newData[15] === "1" ? true : false,
         },
         {
           day: "ศุกร์",
-          start: dayjs("2023-01-01 " + newData[21]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[22]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[23]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[24]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[21]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[22]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[23]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[24]).format("H:mm"),
           checked: newData[20] === "1" ? true : false,
         },
         {
           day: "เสาร์",
-          start: dayjs("2023-01-01 " + newData[26]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[27]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[28]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[29]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[26]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[27]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[28]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[29]).format("H:mm"),
           checked: newData[25] === "1" ? true : false,
         },
         {
           day: "อาทิตย์",
-          start: dayjs("2023-01-01 " + newData[31]).format("HH:mm"),
-          end: dayjs("2023-01-01 " + newData[32]).format("HH:mm"),
-          start2: dayjs("2023-01-01 " + newData[33]).format("HH:mm"),
-          end2: dayjs("2023-01-01 " + newData[34]).format("HH:mm"),
+          start: dayjs("2023-01-01 " + newData[31]).format("H:mm"),
+          end: dayjs("2023-01-01 " + newData[32]).format("H:mm"),
+          start2: dayjs("2023-01-01 " + newData[33]).format("H:mm"),
+          end2: dayjs("2023-01-01 " + newData[34]).format("H:mm"),
           checked: newData[30] === "1" ? true : false,
         },
       ]
