@@ -1,7 +1,5 @@
 import { CopyOutlined, SaveFilled } from "@ant-design/icons"
-import create from "@ant-design/icons/lib/components/IconFont"
 import {
-  Avatar,
   Button,
   Col,
   Input,
@@ -11,15 +9,12 @@ import {
   Select,
   Space,
   Switch,
-  Table,
-  Tabs,
   TimePicker,
   Typography,
 } from "antd"
 import copy from "copy-to-clipboard"
 import dayjs from "dayjs"
 import { useEffect, useRef, useState } from "react"
-import ScheduleGenerator from "./ScheduleGenerator"
 
 const headerStyle = {
   textAlign: "center",
@@ -54,7 +49,7 @@ const tabItems = [
   {
     key: "1",
     label: `Schedule`,
-    children: <ScheduleGenerator />,
+    children: `Content of Tab Pane 1`,
   },
   {
     key: "2",
@@ -63,7 +58,7 @@ const tabItems = [
   },
 ]
 
-const LayoutApp = () => {
+const ScheduleGenerator = () => {
   const { Header, Content, Footer } = Layout
 
   const format = "H:mm"
@@ -72,10 +67,6 @@ const LayoutApp = () => {
   const [textareaValue, setTextareaValue] = useState("")
   const [listData, setListData] = useState([])
   const [scheduleSelect, setScheduleSelect] = useState(scheduleOptions[0].value)
-
-  const onChangeTabs = (key) => {
-    console.log(key)
-  }
 
   const onToggleDaySwitch = (checked, index) => {
     const newData = [...listData]
@@ -232,21 +223,131 @@ const LayoutApp = () => {
 
   return (
     <>
-      <Space direction="vertical" style={{ width: "100%", height: "100vh" }}>
-        <Layout>
-          <Header style={headerStyle}>Schedule Config Generate</Header>
-          <Content style={contentStyle}>
-            <Tabs
-              defaultActiveKey="1"
-              items={tabItems}
-              onChange={onChangeTabs}
+      <Row>
+        <Col sx={24}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "start",
+              paddingBottom: 14,
+            }}
+          >
+            <Select
+              defaultValue={scheduleSelect}
+              style={{ width: 120 }}
+              onChange={handleChange}
+              options={scheduleOptions}
             />
-          </Content>
-          <Footer style={footerStyle}>©2023, by Syntechnology Co.Ltd.</Footer>
-        </Layout>
-      </Space>
+          </div>
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]} wrap={true} justify={"center"}>
+        <Col sm={24} md={16}>
+          <List
+            header={
+              <List.Item
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: 0,
+                }}
+              >
+                <div style={{ width: "20%" }}>
+                  <Typography.Text>วัน</Typography.Text>
+                </div>
+                <div style={{ width: "20%" }}>
+                  <Typography.Text>เวลาเริ่ม</Typography.Text>
+                </div>
+                <div style={{ width: "20%" }}>
+                  <Typography.Text>เวลาสิ้นสุด</Typography.Text>
+                </div>
+                <div style={{ width: "20%" }}>
+                  <Typography.Text>เวลาเริ่ม</Typography.Text>
+                </div>
+                <div style={{ width: "20%" }}>
+                  <Typography.Text>เวลาสิ้นสุด</Typography.Text>
+                </div>
+              </List.Item>
+            }
+            footer={
+              <div>
+                <Button icon={<SaveFilled />} onClick={() => handleSave()}>
+                  Save
+                </Button>
+              </div>
+            }
+            bordered
+            dataSource={listData}
+            renderItem={(item, index) => {
+              return (
+                <List.Item
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Space
+                    direction="vertical"
+                    size="middle"
+                    style={{ display: "flex", width: "20%" }}
+                  >
+                    <Typography.Text>{item.day}</Typography.Text>
+                    <Switch
+                      checked={item.checked}
+                      onChange={(data) => onToggleDaySwitch(data, index)}
+                    />
+                  </Space>
+                  <div style={{ width: "20%" }}>
+                    <TimePicker
+                      value={dayjs(item.start, format)}
+                      format={format}
+                      onChange={(data) =>
+                        handleTimeChange(data, "start", index)
+                      }
+                    />
+                  </div>
+                  <div style={{ width: "20%" }}>
+                    <TimePicker
+                      value={dayjs(item.end, format)}
+                      format={format}
+                      onChange={(data) => handleTimeChange(data, "end", index)}
+                    />
+                  </div>
+                  <div style={{ width: "20%" }}>
+                    <TimePicker
+                      value={dayjs(item.start2, format)}
+                      format={format}
+                      onChange={(data) =>
+                        handleTimeChange(data, "start2", index)
+                      }
+                    />
+                  </div>
+                  <div style={{ width: "20%" }}>
+                    <TimePicker
+                      value={dayjs(item.end2, format)}
+                      format={format}
+                      onChange={(data) => handleTimeChange(data, "end2", index)}
+                    />
+                  </div>
+                </List.Item>
+              )
+            }}
+          />
+        </Col>
+        <Col sm={24} md={8}>
+          <Input.TextArea
+            ref={textareaRef}
+            value={textareaValue}
+            onChange={(e) => setTextareaValue(e.target.value)}
+            style={{ height: "40vh" }}
+          />
+          <Button icon={<CopyOutlined />} onClick={() => copyToClipboard()} style={{ marginTop: 14}}>
+            Copy to Clipboard
+          </Button>
+        </Col>
+      </Row>
     </>
   )
 }
 
-export default LayoutApp
+export default ScheduleGenerator
