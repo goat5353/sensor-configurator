@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Timer Setting</title>
-        <meta name="description" content="Generate Timer" />
+        <title>System Config Generator</title>
+        <meta name="description" content="System Config Generator" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
