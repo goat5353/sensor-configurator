@@ -81,7 +81,7 @@ const ScheduleGenerator = () => {
   }
 
   const createDefaultData = () => {
-    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     const defaultData = []
 
     days.forEach((day) => {
@@ -99,7 +99,7 @@ const ScheduleGenerator = () => {
   }
 
   const convertDataFromString = (data) => {
-    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     const newData = data.split(",")
 
     const convertData = days.map((day, index) => ({
